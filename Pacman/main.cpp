@@ -12,6 +12,6 @@ int main() {
 		iGame.Render();
 	}	
 
-	cout << "laptop was here!" << endl;
+	cout << "main was here!" << endl;
 	return 0;
 }
