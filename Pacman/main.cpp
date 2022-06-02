@@ -10,9 +10,8 @@ int main() {
 	while (iGame.Running()) {
 		iGame.Update();
 		iGame.Render();
-	}
+	}	
 
-	
-	cout << "laptop was here!";
+	cout << "main was here!" << endl;
 	return 0;
 }
