@@ -24,11 +24,6 @@ void CPacMan::InitVariables() {
 	mMovementX = mMovementSpeed;
 	mMovementY = 0.f;
 
-	mCurrMovementX = 0.f;
-	mCurrMovementY = 0.f;
-	mNewMovementX = 0.f;
-	mNewMovementY = 0.f;
-
 	mMouthCycleTimer = 0;
 	mOpeningMouth = false;
 }
@@ -84,32 +79,31 @@ const Direction& CPacMan::GetQuedDir() const {
 }
 
 const void CPacMan::StopPacMan() {
-	mNewMovementX = 0.f;
-	mNewMovementY = 0.f;
-
-	mCurrMovementX = 0.f;
-	mCurrMovementY = 0.f;
+	mMovementX = 0.f;
+	mMovementY = 0.f;
 }
 
 const void CPacMan::SwitchDirection() {
 	mCurrDir = mQuedDir;
 
+	UpdateDirectionTexture();
+
 	switch (mCurrDir) {
 	case Direction::UP:
-		mNewMovementX = 0.f;
-		mNewMovementY = -mMovementSpeed;
+		mMovementX = 0.f;
+		mMovementY = -mMovementSpeed;
 		break;
 	case Direction::DOWN:
-		mNewMovementX = 0.f;
-		mNewMovementY = mMovementSpeed;
+		mMovementX = 0.f;
+		mMovementY = mMovementSpeed;
 		break;
 	case Direction::LEFT:
-		mNewMovementX = -mMovementSpeed;
-		mNewMovementY = 0.f;
+		mMovementX = -mMovementSpeed;
+		mMovementY = 0.f;
 		break;
 	case Direction::RIGHT:
-		mNewMovementX = mMovementSpeed;
-		mNewMovementY = 0.f;
+		mMovementX = mMovementSpeed;
+		mMovementY = 0.f;
 		break;
 	}
 }
@@ -172,38 +166,21 @@ void CPacMan::UpdateMouthCycle(){
 
 void CPacMan::UpdateInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		//mNewMovementX = 0.f;
-		//mNewMovementY = -mMovementSpeed;
 		mQuedDir = Direction::UP;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		//mNewMovementX = -mMovementSpeed;
-		//mNewMovementY = 0.f;
 		mQuedDir = Direction::LEFT;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		//mNewMovementX = 0.f;
-		//mNewMovementY = mMovementSpeed;
 		mQuedDir = Direction::DOWN;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		//mNewMovementX = mMovementSpeed;
-		//mNewMovementY = 0.f;
-
 		mQuedDir = Direction::RIGHT;
 	}
 }
 
 void CPacMan::UpdateMove() {
-	float x = static_cast<float>(mPacMan.getGlobalBounds().left);
-	float y = static_cast<float>(mPacMan.getGlobalBounds().top);
-
-	if (fmod(x, 40) == 0.0 && fmod(y, 40) == 0.0) {
-		UpdateDirectionTexture();
-		mCurrMovementX = mNewMovementX;
-		mCurrMovementY = mNewMovementY;
-	}
-	mPacMan.move(mCurrMovementX, mCurrMovementY);
+	mPacMan.move(mMovementX, mMovementY);
 }
 
 

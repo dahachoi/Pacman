@@ -62,11 +62,6 @@ private:
 	float mMovementX;
 	float mMovementY;
 
-	float mCurrMovementX;
-	float mCurrMovementY;
-	float mNewMovementX;
-	float mNewMovementY;
-
 	//Logic Helpers
 	const int mMouthCycleTimerMax = 1; //40/5, 40pixels is the amount of pixels it needs to travel, within 5 frames
 	int mMouthCycleTimer;

@@ -70,25 +70,26 @@ void CGame::UpdateCollision() {
 	float pacManY = mPacMan.getGlobalBounds().top;
 	
 	//teleport from side of screen to the other side of screen.
-	if (pacManX == -mPacMan.getGlobalBounds().width && pacManY == 360.f) {
-		iPacMan.setPosition(WINDOW_WIDTH, pacManY);
+	if (pacManX <= 0) {
+		if (pacManX == -mPacMan.getGlobalBounds().width && pacManY == 360.f) {
+			iPacMan.setPosition(WINDOW_WIDTH, pacManY);
+		}
 		return;
 	}
-	else if (pacManX == WINDOW_WIDTH && pacManY == 360.f) {
+	if (pacManX == WINDOW_WIDTH && pacManY == 360.f) {
 		iPacMan.setPosition(-mPacMan.getGlobalBounds().width, pacManY);
 		return;
 	}
-
+	
+	//collision with wall
 	if (fmod(pacManX, 40) == 0.0 && fmod(pacManY, 40) == 0.0) {
 		if (!iWalls.UpdateCollision(pacManX, pacManY, iPacMan.GetQuedDir())) {
 			iPacMan.SwitchDirection();
 		}
 		else if (iWalls.UpdateCollision(pacManX, pacManY, iPacMan.GetCurrDir())) {
 			iPacMan.StopPacMan();
-			
 		}
-		iPacMan.setPosition(pacManX, pacManY);
-
+		//iPacMan.setPosition(pacManX, pacManY);
 	}
 	
 
