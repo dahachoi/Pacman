@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CCoinBlock.cpp" />
+    <ClCompile Include="CCoins.cpp" />
     <ClCompile Include="CGame.cpp" />
     <ClCompile Include="CWallBlock.cpp" />
     <ClCompile Include="CWalls.cpp" />
@@ -26,6 +28,8 @@
     <ClCompile Include="CPacMan.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CCoinBlock.h" />
+    <ClInclude Include="CCoins.h" />
     <ClInclude Include="CGame.h" />
     <ClInclude Include="CPacMan.h" />
     <ClInclude Include="CWallBlock.h" />

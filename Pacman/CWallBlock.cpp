@@ -2,18 +2,18 @@
 
 using namespace std;
 
-CWallBlock::CWallBlock(float x, float y)
+CWallBlock::CWallBlock(const float &x,const float &y)
 	: mX(x), mY(y), mColor(sf::Color::Blue)
 {
 	InitVariables();
-	InitBlock();
+	InitShape();
 }
 
 void CWallBlock::InitVariables() {
 	mSizeX = 40.f;
 	mSizeY = 40.f;
 }
-void CWallBlock::InitBlock()
+void CWallBlock::InitShape()
 {
 	mShape.setSize(sf::Vector2f(mSizeX, mSizeY));
 	mShape.setFillColor(mColor);
@@ -23,8 +23,4 @@ void CWallBlock::InitBlock()
 void CWallBlock::Render(sf::RenderTarget* target)
 {
 	target->draw(mShape);
-}
-
-sf::RectangleShape CWallBlock::GetShape() const {
-	return mShape;
 }

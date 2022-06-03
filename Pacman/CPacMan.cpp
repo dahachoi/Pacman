@@ -167,15 +167,19 @@ void CPacMan::UpdateMouthCycle(){
 void CPacMan::UpdateInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		mQuedDir = Direction::UP;
+		if (mCurrDir == Direction::DOWN) SwitchDirection();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		mQuedDir = Direction::LEFT;
+		if (mCurrDir == Direction::RIGHT) SwitchDirection();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 		mQuedDir = Direction::DOWN;
+		if (mCurrDir == Direction::UP) SwitchDirection();
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		mQuedDir = Direction::RIGHT;
+		if (mCurrDir == Direction::LEFT) SwitchDirection();
 	}
 }
 

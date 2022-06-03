@@ -9,14 +9,14 @@ CWalls::CWalls()
 }
 
 void CWalls::InitVariables() {
-	mCurrPosX = 0.f;
-	mCurrPosY = 0.f;
 	mXGap = 40.f;
 	mYGap = 40.f;
 }
 
 void CWalls::InitWalls() {
-	
+	float mCurrPosX = 0.f;
+	float mCurrPosY = 0.f;
+
 	for (int i = 0; i < sketch.size(); ++i) {
 		for (int j = 0; j < sketch.size(); ++j) {
 			if (sketch[i][j] == '#') {
@@ -27,8 +27,6 @@ void CWalls::InitWalls() {
 		mCurrPosX = 0.0;
 		mCurrPosY += mYGap;
 	}
-
-	cout << "size of mBlocks" << mBlocks.size() << endl;
 }
 
 
@@ -52,10 +50,7 @@ bool CWalls::UpdateCollision(float& x, float& y, const Direction& dir) {
 		break;
 	}
 
-	if (sketch[i][j] == '#') {
-		cout << "is a wall!" << endl << endl;
-		return true;
-	}
+	if (sketch[i][j] == '#') return true;
 
 	return false;
 }
@@ -64,8 +59,4 @@ void CWalls::Render(sf::RenderTarget* target) {
 	for (auto i : mBlocks) {
 		i->Render(target);
 	}
-}
-
-const vector<CWallBlock*>& CWalls::GetBlockVector() const {
-	return mBlocks;
 }

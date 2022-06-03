@@ -9,25 +9,18 @@
 #include "SFML/Audio.hpp"
 #include "SFML/Network.hpp"
 
-class CWallBlock
-{
+class CCoinBlock{
 public:
-	CWallBlock(const float& x,const float& y);
-
+	CCoinBlock(const float& x,const float& y);
+	
 	void Render(sf::RenderTarget*);
 private:
-	sf::RectangleShape mShape;
-	sf::Color mColor;
-	
-	//pos
+	sf::Sprite mSprite;
+	sf::Texture mTexture;
+
 	float mX;
 	float mY;
 
-	//size
-	float mSizeX;
-	float mSizeY;
-
-	void InitVariables();
-	void InitShape();
+	void InitSprite();
 };
 

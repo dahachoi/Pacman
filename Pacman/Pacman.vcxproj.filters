@@ -30,6 +30,12 @@
     <ClCompile Include="CWalls.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CCoinBlock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CCoins.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGame.h">
@@ -45,6 +51,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Direction.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CCoinBlock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CCoins.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

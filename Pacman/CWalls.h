@@ -1,13 +1,4 @@
 #pragma once
-#include <vector>
-#include <string>
-
-#include "SFML/System.hpp"
-#include "SFML/Window.hpp"
-#include "SFML/Graphics.hpp"
-#include "SFML/Audio.hpp"
-#include "SFML/Network.hpp"
-
 #include "CWallBlock.h"
 #include "Direction.h"
 
@@ -20,7 +11,6 @@ public:
 
 	//Helper Functions
 
-	const std::vector<CWallBlock*>& GetBlockVector() const;
 private:
 	std::vector<std::string> sketch = {
 		" ################### ",
@@ -46,11 +36,8 @@ private:
 		" ################### "
 	};
 
-	float mCurrPosX;
-	float mCurrPosY;
 	float mYGap;
 	float mXGap;
-
 
 	std::vector<CWallBlock*> mBlocks;
 
