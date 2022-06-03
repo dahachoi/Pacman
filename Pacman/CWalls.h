@@ -9,12 +9,14 @@
 #include "SFML/Network.hpp"
 
 #include "CWallBlock.h"
+#include "Direction.h"
 
 class CWalls{
 public:
 	CWalls();
 
 	void Render(sf::RenderTarget* target);
+	bool UpdateCollision(float&, float&, const Direction&);
 
 	//Helper Functions
 

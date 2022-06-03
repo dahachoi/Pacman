@@ -8,7 +8,7 @@
 #include "SFML/Audio.hpp"
 #include "SFML/Network.hpp"
 
-enum class Direction {NONE = 0, RIGHT, LEFT, UP, DOWN};
+#include "Direction.h"
 
 class CPacMan{
 public:

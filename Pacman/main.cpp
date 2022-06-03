@@ -11,7 +11,5 @@ int main() {
 		iGame.Update();
 		iGame.Render();
 	}	
-
-	cout << "main was here!" << endl;
 	return 0;
 }

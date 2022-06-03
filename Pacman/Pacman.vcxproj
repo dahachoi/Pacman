@@ -30,6 +30,7 @@
     <ClInclude Include="CPacMan.h" />
     <ClInclude Include="CWallBlock.h" />
     <ClInclude Include="CWalls.h" />
+    <ClInclude Include="Direction.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

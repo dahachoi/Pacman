@@ -31,6 +31,42 @@ void CWalls::InitWalls() {
 	cout << "size of mBlocks" << mBlocks.size() << endl;
 }
 
+bool CWalls::UpdateCollision(float& x, float& y, const Direction& dir) {
+	int i = static_cast<int>(y / 40);
+	int j = static_cast<int>(x / 40);
+
+	switch (dir) {
+	case Direction::RIGHT:
+		j++;
+		break;
+	case Direction::DOWN:
+		i++;
+		break;
+	}
+
+	bool collided = false;
+
+	if (sketch[i][j] == '#') {
+		collided = true;
+		switch (dir) {
+		case Direction::UP:
+			y = 40.f * float(i + 1);
+			break;
+		case Direction::DOWN:
+			y = 40.f * float(i - 1);
+			break;
+		case Direction::LEFT:
+			x = 40.f * float(j + 1);
+			break;
+		case Direction::RIGHT:
+			x = 40.f * float(j - 1);
+			break;
+		}
+	}
+
+	return collided;
+}
+
 void CWalls::Render(sf::RenderTarget* target) {
 	for (auto i : mBlocks) {
 		i->Render(target);
