@@ -69,41 +69,18 @@ void CGame::UpdateCollision() {
 	float pacManX = mPacMan.getGlobalBounds().left;
 	float pacManY = mPacMan.getGlobalBounds().top;
 	
-	if (pacManX== 0.f - mPacMan.getGlobalBounds().width && pacManY == 360.f) {
+	if (pacManX == -mPacMan.getGlobalBounds().width && pacManY == 360.f) {
 		iPacMan.setPosition(WINDOW_WIDTH, pacManY);
 		return;
 	}
 	else if (pacManX == WINDOW_WIDTH && pacManY == 360.f) {
-		iPacMan.setPosition(0.f - mPacMan.getGlobalBounds().width, pacManX);
+		iPacMan.setPosition(-mPacMan.getGlobalBounds().width, pacManY);
 		return;
 	}
-
-	if (iWalls.UpdateCollision(pacManX, pacManY, iPacMan.GetDir())) {
+	
+	if (iWalls.UpdateCollision(pacManX, pacManY, iPacMan.GetCurrDir())) {
 		iPacMan.setPosition(pacManX, pacManY);
 	}
-
-	/*for (auto i : mBlocks) {
-		if (mPacMan.getGlobalBounds().intersects(i->GetShape().getGlobalBounds())) {
-			switch (iPacMan.GetDir()) {
-			case Direction::UP:
-				iPacMan.setPosition(i->GetShape().getGlobalBounds().left, i->GetShape().getGlobalBounds().top + i->GetShape().getGlobalBounds().height);
-				break;
-			case Direction::DOWN:
-				iPacMan.setPosition(i->GetShape().getGlobalBounds().left, i->GetShape().getGlobalBounds().top - i->GetShape().getGlobalBounds().height);
-				break;
-			case Direction::RIGHT:
-				iPacMan.setPosition(i->GetShape().getGlobalBounds().left - i->GetShape().getGlobalBounds().width, i->GetShape().getGlobalBounds().top);
-				break;
-			case Direction::LEFT:
-				iPacMan.setPosition(i->GetShape().getGlobalBounds().left + i->GetShape().getGlobalBounds().width, i->GetShape().getGlobalBounds().top);
-				break;
-			}
-			return;
-		}
-	}*/
-
-
-	
 }
 
 //Game Update & Render

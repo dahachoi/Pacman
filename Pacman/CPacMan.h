@@ -17,7 +17,8 @@ public:
 	//Functions
 	void setPosition(const float&, const float&);
 	const sf::Sprite& GetShape() const;
-	const Direction& GetDir() const;
+	const Direction& GetCurrDir() const;
+	const Direction& GetQuedDir() const;
 
 	void Update(const sf::RenderTarget*);
 	void Render(sf::RenderTarget*);
@@ -28,7 +29,8 @@ private:
 	float mWidth;
 	float mHeight;
 
-	Direction eDir;
+	Direction mCurrDir;
+	Direction mQuedDir;
 	//pacman textures
 	sf::Texture mPacManClosedTexture;
 
@@ -56,6 +58,9 @@ private:
 	float mMovementSpeed;
 	bool goingVerticle;
 	bool stopped;
+
+	float mMovementX;
+	float mMovementY;
 
 	float mCurrMovementX;
 	float mCurrMovementY;

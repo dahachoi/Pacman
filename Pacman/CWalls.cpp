@@ -31,6 +31,8 @@ void CWalls::InitWalls() {
 	cout << "size of mBlocks" << mBlocks.size() << endl;
 }
 
+
+
 bool CWalls::UpdateCollision(float& x, float& y, const Direction& dir) {
 	int i = static_cast<int>(y / 40);
 	int j = static_cast<int>(x / 40);

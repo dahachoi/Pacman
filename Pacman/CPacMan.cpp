@@ -12,7 +12,7 @@ void CPacMan::InitVariables() {
 	mX = 0.f;
 	mY = 0.f;
 
-	eDir = Direction::RIGHT;
+	mCurrDir = Direction::RIGHT;
 	mPacManOpenTexture = &mPacManOpenRightTexture;
 	mPacManHalfOpenTexture = &mPacManHalfOpenRightTexture;
 
@@ -22,6 +22,9 @@ void CPacMan::InitVariables() {
 	mMovementSpeed = 2;	
 	goingVerticle = false;
 	stopped = false;
+
+	mMovementX = mMovementSpeed;
+	mMovementY = 0.f;
 
 	mCurrMovementX = 0.f;
 	mCurrMovementY = 0.f;
@@ -74,9 +77,14 @@ const sf::Sprite& CPacMan::GetShape() const {
 	return mPacMan;
 }
 
-const Direction& CPacMan::GetDir() const {
-	return eDir;
+const Direction& CPacMan::GetCurrDir() const {
+	return mCurrDir;
 }
+
+const Direction& CPacMan::GetQuedDir() const {
+	return mQuedDir;
+}
+
 //Functions
 
 void CPacMan::setPosition(const float& x, const float& y) {
@@ -103,7 +111,7 @@ void CPacMan::cycleMouthMovement() {
 
 }
 void CPacMan::UpdateDirectionTexture() {
-	switch (eDir) {
+	switch (mCurrDir) {
 	case Direction::DOWN:
 		mPacManOpenTexture = &mPacManOpenDownTexture;
 		mPacManHalfOpenTexture = &mPacManHalfOpenDownTexture;
@@ -137,26 +145,23 @@ void CPacMan::UpdateInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
 		mNewMovementX = 0.f;
 		mNewMovementY = -mMovementSpeed;
-		goingVerticle = true;
-		eDir = Direction::UP;
+		mCurrDir = Direction::UP;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		mNewMovementX = -mMovementSpeed;
 		mNewMovementY = 0.f;
-		goingVerticle = false;
-		eDir = Direction::LEFT;
+		mCurrDir = Direction::LEFT;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
 		mNewMovementX = 0.f;
 		mNewMovementY = mMovementSpeed;
-		goingVerticle = true;
-		eDir = Direction::DOWN;
+		mCurrDir = Direction::DOWN;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
 		mNewMovementX = mMovementSpeed;
 		mNewMovementY = 0.f;
-		goingVerticle = false;
-		eDir = Direction::RIGHT;
+
+		mCurrDir = Direction::RIGHT;
 	}
 }
 
@@ -169,17 +174,6 @@ void CPacMan::UpdateMove() {
 		mCurrMovementX = mNewMovementX;
 		mCurrMovementY = mNewMovementY;
 	}
-
-	//if (goingVerticle && mNewMovementX == 0) {
-	//	UpdateDirectionTexture();
-	//	mCurrMovementX = mNewMovementX;
-	//	mCurrMovementY = mNewMovementY;
-	//}
-	//if (!goingVerticle && mNewMovementY == 0) {
-	//	UpdateDirectionTexture();
-	//	mCurrMovementX = mNewMovementX;
-	//	mCurrMovementY = mNewMovementY;
-	//}
 	mPacMan.move(mCurrMovementX, mCurrMovementY);
 }
 
@@ -189,7 +183,6 @@ void CPacMan::Update(const sf::RenderTarget* target) {
 	//Movement
 	UpdateInput();
 	UpdateMove();
-
 	UpdateMouthCycle();
 }
 
