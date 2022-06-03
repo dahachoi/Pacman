@@ -20,8 +20,6 @@ void CPacMan::InitVariables() {
 	mHeight = 40;
 
 	mMovementSpeed = 2;	
-	goingVerticle = false;
-	stopped = false;
 
 	mMovementX = mMovementSpeed;
 	mMovementY = 0.f;
@@ -85,6 +83,37 @@ const Direction& CPacMan::GetQuedDir() const {
 	return mQuedDir;
 }
 
+const void CPacMan::StopPacMan() {
+	mNewMovementX = 0.f;
+	mNewMovementY = 0.f;
+
+	mCurrMovementX = 0.f;
+	mCurrMovementY = 0.f;
+}
+
+const void CPacMan::SwitchDirection() {
+	mCurrDir = mQuedDir;
+
+	switch (mCurrDir) {
+	case Direction::UP:
+		mNewMovementX = 0.f;
+		mNewMovementY = -mMovementSpeed;
+		break;
+	case Direction::DOWN:
+		mNewMovementX = 0.f;
+		mNewMovementY = mMovementSpeed;
+		break;
+	case Direction::LEFT:
+		mNewMovementX = -mMovementSpeed;
+		mNewMovementY = 0.f;
+		break;
+	case Direction::RIGHT:
+		mNewMovementX = mMovementSpeed;
+		mNewMovementY = 0.f;
+		break;
+	}
+}
+
 //Functions
 
 void CPacMan::setPosition(const float& x, const float& y) {
@@ -143,25 +172,25 @@ void CPacMan::UpdateMouthCycle(){
 
 void CPacMan::UpdateInput() {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-		mNewMovementX = 0.f;
-		mNewMovementY = -mMovementSpeed;
-		mCurrDir = Direction::UP;
+		//mNewMovementX = 0.f;
+		//mNewMovementY = -mMovementSpeed;
+		mQuedDir = Direction::UP;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		mNewMovementX = -mMovementSpeed;
-		mNewMovementY = 0.f;
-		mCurrDir = Direction::LEFT;
+		//mNewMovementX = -mMovementSpeed;
+		//mNewMovementY = 0.f;
+		mQuedDir = Direction::LEFT;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-		mNewMovementX = 0.f;
-		mNewMovementY = mMovementSpeed;
-		mCurrDir = Direction::DOWN;
+		//mNewMovementX = 0.f;
+		//mNewMovementY = mMovementSpeed;
+		mQuedDir = Direction::DOWN;
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-		mNewMovementX = mMovementSpeed;
-		mNewMovementY = 0.f;
+		//mNewMovementX = mMovementSpeed;
+		//mNewMovementY = 0.f;
 
-		mCurrDir = Direction::RIGHT;
+		mQuedDir = Direction::RIGHT;
 	}
 }
 

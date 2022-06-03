@@ -19,6 +19,8 @@ public:
 	const sf::Sprite& GetShape() const;
 	const Direction& GetCurrDir() const;
 	const Direction& GetQuedDir() const;
+	const void StopPacMan();
+	const void SwitchDirection();
 
 	void Update(const sf::RenderTarget*);
 	void Render(sf::RenderTarget*);
@@ -56,8 +58,6 @@ private:
 	float mY;
 	//MovementSpeed
 	float mMovementSpeed;
-	bool goingVerticle;
-	bool stopped;
 
 	float mMovementX;
 	float mMovementY;
