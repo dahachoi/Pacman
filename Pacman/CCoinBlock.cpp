@@ -9,15 +9,15 @@ CCoinBlock::CCoinBlock(const float& x, const float& y)
 }
 
 void CCoinBlock::InitSprite() {
-	if (!mTexture.loadFromFile("Game_Resources/Coin/Coin.png")){
-		cout << "error loading in coin image" << endl;
-	}
-
-	mSprite.setTexture(mTexture);
-	mSprite.setScale(0.23391812865, 0.23391812865);
-	mSprite.setPosition(mX, mY);
+	mShape.setRadius(5);
+	mShape.setFillColor(sf::Color::Yellow);
+	mShape.setOutlineThickness(2.f);
+	mShape.setOutlineColor(sf::Color::Black);
+	mShape.setOrigin(mShape.getGlobalBounds().width / 2, mShape.getGlobalBounds().height / 2);
+	
+	mShape.setPosition(sf::Vector2f(mX, mY));
 }
 
 void CCoinBlock::Render(sf::RenderTarget* target) {
-	target->draw(mSprite);
+	target->draw(mShape);
 }

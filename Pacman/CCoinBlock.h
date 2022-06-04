@@ -15,7 +15,7 @@ public:
 	
 	void Render(sf::RenderTarget*);
 private:
-	sf::Sprite mSprite;
+	sf::CircleShape mShape;
 	sf::Texture mTexture;
 
 	float mX;

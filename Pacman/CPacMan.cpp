@@ -9,19 +9,18 @@ CPacMan::CPacMan() {
 
 void CPacMan::InitVariables() {
 	//Sprite
-	mX = 0.f;
-	mY = 0.f;
+	mX = 400.f;
+	mY = 680.f;
 
-	mCurrDir = Direction::RIGHT;
-	mPacManOpenTexture = &mPacManOpenRightTexture;
-	mPacManHalfOpenTexture = &mPacManHalfOpenRightTexture;
+	mCurrDir = Direction::NONE;
+	mQuedDir = Direction::NONE;
 
 	mWidth = 40;
 	mHeight = 40;
 
 	mMovementSpeed = 2;	
 
-	mMovementX = mMovementSpeed;
+	mMovementX = 0.f;
 	mMovementY = 0.f;
 
 	mMouthCycleTimer = 0;
@@ -59,11 +58,9 @@ void CPacMan::InitPacMan() {
 	mPacManOpenDownTexture.setSmooth(true);
 	mPacManHalfOpenDownTexture.setSmooth(true);
 	
-
-
-	mPacMan.setTexture(mPacManOpenLeftTexture);
+	mPacMan.setTexture(mPacManClosedTexture);
 	mPacMan.setScale(0.1f, 0.1f);
-	cout << "After scaled : " << mPacMan.getGlobalBounds().width << ", " << mPacMan.getGlobalBounds().height << endl;
+	mPacMan.setPosition(mX, mY);
 }
 
 const sf::Sprite& CPacMan::GetShape() const {
@@ -155,6 +152,7 @@ void CPacMan::UpdateDirectionTexture() {
 }
 
 void CPacMan::UpdateMouthCycle(){
+	if (mCurrDir == Direction::NONE) return;
 	mMouthCycleTimer++;
 	if (mMouthCycleTimer == 8) {
 		cycleMouthMovement();

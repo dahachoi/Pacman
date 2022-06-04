@@ -6,6 +6,7 @@ int main() {
 	srand(static_cast<unsigned>(time(0)));
 
 	CGame iGame;
+	cout << "Opening Game...";
 
 	while (iGame.Running()) {
 		iGame.Update();

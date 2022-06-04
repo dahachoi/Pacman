@@ -18,7 +18,7 @@ void CWalls::InitWalls() {
 	float mCurrPosY = 0.f;
 
 	for (int i = 0; i < sketch.size(); ++i) {
-		for (int j = 0; j < sketch.size(); ++j) {
+		for (int j = 0; j < sketch[0].size(); ++j) {
 			if (sketch[i][j] == '#') {
 				mBlocks.push_back(new CWallBlock(mCurrPosX, mCurrPosY));
 			}
