@@ -18,6 +18,7 @@ public:
 	CGame();
 	~CGame();
 
+	void OpenWindow();
 	//Check Game Running
 	const bool Running() const;
 	//Game Update & Render

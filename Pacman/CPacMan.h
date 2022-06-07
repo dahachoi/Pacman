@@ -28,14 +28,12 @@ private:
 	//Sprite
 	sf::Sprite mPacMan;
 	
-	float mWidth;
-	float mHeight;
-
 	Direction mCurrDir;
 	Direction mQuedDir;
-	//pacman textures
-	sf::Texture mPacManClosedTexture;
 
+	//pacman textures
+	//Closed
+	sf::Texture mPacManClosedTexture;
 	//Left
 	sf::Texture mPacManOpenLeftTexture;
 	sf::Texture mPacManHalfOpenLeftTexture;

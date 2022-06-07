@@ -21,19 +21,29 @@
   <ItemGroup>
     <ClCompile Include="CCoinBlock.cpp" />
     <ClCompile Include="CCoins.cpp" />
+    <ClCompile Include="CCyanGhost.cpp" />
     <ClCompile Include="CGame.cpp" />
+    <ClCompile Include="CGhost.cpp" />
+    <ClCompile Include="CPinkGhost.cpp" />
+    <ClCompile Include="CRedGhost.cpp" />
     <ClCompile Include="CWallBlock.cpp" />
     <ClCompile Include="CWalls.cpp" />
+    <ClCompile Include="CYellowGhost.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="CPacMan.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CCoinBlock.h" />
     <ClInclude Include="CCoins.h" />
+    <ClInclude Include="CCyanGhost.h" />
     <ClInclude Include="CGame.h" />
+    <ClInclude Include="CGhost.h" />
     <ClInclude Include="CPacMan.h" />
+    <ClInclude Include="CPinkGhost.h" />
+    <ClInclude Include="CRedGhost.h" />
     <ClInclude Include="CWallBlock.h" />
     <ClInclude Include="CWalls.h" />
+    <ClInclude Include="CYellowGhost.h" />
     <ClInclude Include="Direction.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

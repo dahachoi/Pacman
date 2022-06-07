@@ -3,10 +3,11 @@ using namespace std;
 
 //Constructor & Destructor
 CGame::CGame() {
+	cout << "loading game..." << "\n\n";
 	InitVariables();
-	InitWindow();
 	InitFont();
 	InitTexts();
+	//InitWindow();
 }
 
 CGame::~CGame() {
@@ -40,6 +41,10 @@ void CGame::InitVariables() {
 	mGainPoints = 10;
 	
 	mShowOnePlayerText = true;
+}
+
+void CGame::OpenWindow() {
+	InitWindow();
 }
 
 void CGame::InitWindow() {

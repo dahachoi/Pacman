@@ -15,9 +15,6 @@ void CPacMan::InitVariables() {
 	mCurrDir = Direction::NONE;
 	mQuedDir = Direction::NONE;
 
-	mWidth = 40;
-	mHeight = 40;
-
 	mMovementSpeed = 2;	
 
 	mMovementX = 0.f;
